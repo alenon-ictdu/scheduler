@@ -46,12 +46,12 @@
 <div class="page-breadcrumb">
     <div class="row">
         <div class="col-12 d-flex no-block align-items-center">
-            <h4 class="page-title">Section : {{ $faculty->firstname. ' ' .$faculty->middlename. ' ' .$faculty->lastname }}</h4>
+            <h4 class="page-title">Faculty : {{ $faculty->firstname. ' ' .$faculty->middlename. ' ' .$faculty->lastname }}</h4>
             <div class="ml-auto text-right">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Section {{ $faculty->firstname. ' ' .$faculty->middlename. ' ' .$faculty->lastname }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">Faculty {{ $faculty->firstname. ' ' .$faculty->middlename. ' ' .$faculty->lastname }}</li>
                     </ol>
                 </nav>
             </div>
