@@ -43,6 +43,7 @@ Route::get('faculty/{id}/edit', 'FacultyController@edit')->name('faculty.edit');
 Route::get('/faculty/show', 'FacultyController@show')->name('faculty.show');
 Route::match(['PUT', 'PATCH'], 'faculty/{id}/edit', 'FacultyController@update')->name('faculty.update');
 Route::delete('faculty/{id}/delete', 'FacultyController@destroy')->name('faculty.destroy');
+Route::get('faculty/{id}/schedule', 'FacultyController@schedule')->name('faculty.schedule');
 
 // subject routes
 Route::get('subjects', 'SubjectController@index')->name('subject.index');

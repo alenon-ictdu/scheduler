@@ -54,7 +54,7 @@
                                     <a href="{{ route('faculty.edit', $row->id) }}" class="btn btn-info btn-xs"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-success btn-xs" id="viewFaculty" data-id="{{ $row->id }}"><i class="fa fa-eye"></i></a>
                                     @if(!in_array($row->id, $cantDelete))<button type="submit" class="btn btn-xs btn-danger" form="deleteFaculty{{$row->id}}"><i class="fa fa-trash"></i> </button>@endif
-                                    {{-- <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-list"></i> View Section</a> --}}
+                                    <a href="{{ route('faculty.schedule', $row->id) }}" class="btn btn-xs btn-warning"><i class="fa fa-list"></i> View Section</a>
                                     @if(!in_array($row->id, $cantDelete))<form id="deleteFaculty{{$row->id}}" method="POST" action="{{ route('faculty.destroy', $row->id) }}" onsubmit="return ConfirmDelete()">
                                         <input type="hidden" name="_token" value="{{ Session::token() }}">
                                         {{ method_field('DELETE') }}

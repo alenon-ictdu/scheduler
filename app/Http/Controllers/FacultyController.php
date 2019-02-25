@@ -102,4 +102,39 @@ class FacultyController extends Controller
         }
     }
 
+    public function schedule($id) {
+        $ctr = 1;
+        $faculty = Faculty::find($id);
+        $schedule = Schedule::where('teacher_id', $id)->get();
+
+        $schedArr = [];
+        $x = 0;
+        foreach ($schedule as $row) {
+            $subject = Subject::find($row->subject_id);
+            $section = Section::find($row->section_id);
+            $schedArr[$x++] = [
+                'id' => $row->id,
+                'section_id' => $row->section_id,
+                'subject_id' => $row->subject_id,
+                'subject_code' => $subject->code,
+                'subject_description' => $subject->description,
+                'section_id' => $row->teacher_id,
+                'section_code' => $section->code,
+                'section_name' => $section->name,
+                'section_year' => $section->year,
+                'day' => $row->day,
+                'start' => $start  = date("H:i", strtotime($row->start)),
+                'end' => $end  = date("H:i", strtotime($row->end))
+            ];
+        }
+
+        $schedArr = json_decode(json_encode($schedArr));
+        // print_r($schedArr);
+        return view('admin.faculty.schedule')
+            ->with('pageTitle', 'Teacher :: Schedule')
+            ->with('faculty', $faculty)
+            ->with('ctr', $ctr)
+            ->with('schedule', $schedArr);
+    }
+
 }
