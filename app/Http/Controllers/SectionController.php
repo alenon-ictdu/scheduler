@@ -18,8 +18,17 @@ class SectionController extends Controller
     public function index() {
     	$sections = Section::orderBy('created_at', 'desc')->get();
 
+        $cantDelete = [];
+        $schedules = Schedule::all();
+        foreach ($schedules as $row) {
+            if (!in_array($row->section_id, $cantDelete)) {
+                array_push($cantDelete, $row->section_id);
+            }
+        }
+
     	return view('admin.section.index')
     		->with('pageTitle', 'Sections')
+            ->with('cantDelete', $cantDelete)
     		->with('sections', $sections);
     }
 

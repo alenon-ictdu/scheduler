@@ -53,13 +53,13 @@
                                 <td>
                                     <a href="{{ route('section.edit', $row->id) }}" class="btn btn-info btn-xs"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-success btn-xs" id="viewSection" data-id="{{ $row->id }}"><i class="fa fa-eye"></i></a>
-                                    <button type="submit" class="btn btn-xs btn-danger" form="deleteSection{{$row->id}}"><i class="fa fa-trash"></i> </button>
+                                    @if(!in_array($row->id, $cantDelete))<button type="submit" class="btn btn-xs btn-danger" form="deleteSection{{$row->id}}"><i class="fa fa-trash"></i> </button> @endif
                                     <a href="{{ route('section.schedule', $row->id) }}" class="btn btn-xs btn-warning"> View Schedule</a>
                                     <a href="{{ route('section.schedule.create', $row->id) }}" class="btn btn-xs btn-light"> Manage Schedule</a>
-                                    <form id="deleteSection{{$row->id}}" method="POST" action="{{ route('section.destroy', $row->id) }}" onsubmit="return ConfirmDelete()">
+                                    @if(!in_array($row->id, $cantDelete))<form id="deleteSection{{$row->id}}" method="POST" action="{{ route('section.destroy', $row->id) }}" onsubmit="return ConfirmDelete()">
                                         <input type="hidden" name="_token" value="{{ Session::token() }}">
                                         {{ method_field('DELETE') }}
-                                    </form>
+                                    </form> @endif
                                 </td>
                             </tr>
                             @endforeach
