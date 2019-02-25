@@ -43,7 +43,8 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
-                        <span class="db"><img src="{{ asset('matrix/assets/images/logo.png') }}" alt="logo" /></span>
+                        {{-- <span class="db"><img src="{{ asset('matrix/assets/images/logo.png') }}" alt="logo" /></span> --}}
+                        <h2 style="color: white;">Class Scheduling System</h2>
                     </div>
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" id="loginform" method="POST" action="{{ route('login') }}">
